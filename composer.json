@@ -7,7 +7,8 @@
         "email": "info@andreatantimonaco.me"
     }],
     "require": {
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.22"
     },
     "autoload": {
         "psr-0": {
