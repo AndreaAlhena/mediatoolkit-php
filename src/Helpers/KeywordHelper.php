@@ -2,9 +2,9 @@
 
 namespace AndrewReborn\Mediatoolkit\Helpers;
 
-use AndrewReborn\Mediatoolkit\Models\Group;
+use AndrewReborn\Mediatoolkit\Models\Keyword;
 
-class GroupHelper extends Helper
+class KeywordHelper extends Helper
 {
     /**
      * Returns the available groups. If a $group is provided, a Group is returned.
@@ -17,7 +17,7 @@ class GroupHelper extends Helper
     public function read($group = null)
     {
         if (empty($group)) {
-            return new Group($this->request('groups', [])->getData());
+            return new Keyword($this->request('groups', [])->getData());
         }
     }
 }

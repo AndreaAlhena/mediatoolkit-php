@@ -46,12 +46,12 @@ class Keyword
         return $this->_lastEdit;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->_name;
     }
 
-    public function getNaturalKeyword()
+    public function getNaturalKeyword(): string
     {
         return $this->_naturalKeyword;
     }
