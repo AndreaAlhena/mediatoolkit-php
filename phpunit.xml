@@ -1,0 +1,7 @@
+<phpunit bootstrap="tests/bootstrap.php">
+  <testsuites>
+    <testsuite name="main">
+      <directory>tests/MediatoolkitTest.php</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
