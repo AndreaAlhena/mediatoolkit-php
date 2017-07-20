@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Mediatoolkit;
 
 use GuzzleHttp\Client,
     Mediatoolkit\Exceptions\MediatoolkitException,
-    Mediatoolkit\Helpers\GroupHelper;
+    Mediatoolkit\Helpers\GroupHelper,
+    Mediatoolkit\Helpers\KeywordHelper;
 
 class Mediatoolkit
 {
@@ -36,17 +39,22 @@ class Mediatoolkit
     /**
      * Initialize the Mediatoolkit SDK
      */
-    public function __construct($organisation = null, $token = null)
+    public function __construct(string $organisation = null, string $token = null)
     {
-        $this->_organisation = getenv(self::ORGANISATION_ENV_NAME) ?? $organisation;
-        $this->_token        = getenv(self::TOKEN_ENV_NAME) ?? $token;
+        $this->_organisation = ($organisation == null)
+            ? getenv(self::ORGANISATION_ENV_NAME)
+            : $organisation;
+
+        $this->_token        = ($token == null)
+            ? getenv(self::TOKEN_ENV_NAME)
+            : $token;
 
         if (empty($this->_organisation)) {
             throw new MediatoolkitException('No Organisation provided');
         }
 
         if (empty($this->_token)) {
-            //throw new MediatoolkitException('No Token provided');
+            throw new MediatoolkitException('No Token provided');
         }
 
         $this->client = new Client(['base_uri' => self::BASE_URI]);
@@ -77,7 +85,7 @@ class Mediatoolkit
      * 
      * @return string
      */
-    public function getOrganization()
+    public function getOrganization(): string
     {
         return $this->_organization;
     }
@@ -87,7 +95,7 @@ class Mediatoolkit
      *
      * @return string
      */
-    public function getToken()
+    public function getToken(): string
     {
         return $this->_token;
     }
