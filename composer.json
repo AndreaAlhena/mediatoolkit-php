@@ -1,0 +1,21 @@
+{
+    "name": "andrewreborn/mediatoolkit-php",
+    "description": "A MediaToolkit SDK written in PHP that works with MediaToolkit ReST API",
+    "type": "library",
+    "authors": [{
+        "name": "Andrea Tantimonaco",
+        "email": "info@andreatantimonaco.me"
+    }],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "AndreaReborn\\Mediatoolkit": "src"
+        }
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/AndrewReborn/mediatoolkit-php"
+    }]
+}
