@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Helpers;
+namespace Mediatoolkit\Helpers;
 
 class HelperResponse
 {

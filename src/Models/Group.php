@@ -1,9 +1,14 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Models;
+namespace Mediatoolkit\Models;
 
 class Group
 {
+    const DATA_ID_KEY              = 'id';
+    const DATA_IS_PUBLIC_KEY       = 'public';
+    const DATA_KEYWORDS_KEY        = 'keywords';
+    const DATA_NAME_KEY            = 'name';
+
     private $_id;
 
     private $_isPublic;
@@ -19,11 +24,11 @@ class Group
      */
     public function __construct($data)
     {
-        $this->_id       = $data['id'];
-        $this->_isPublic = $data['public'];
-        $this->_name     = $data['name'];
+        $this->_id       = $data[self::DATA_ID_KEY];
+        $this->_isPublic = $data[self::DATA_IS_PUBLIC_KEY];
+        $this->_name     = $data[self::DATA_NAME_KEY];
 
-        foreach ($data['keywords'] as $keyword) {
+        foreach ($data[self::DATA_KEYWORDS_KEY] as $keyword) {
             $this->_keywords[] = new Keyword($keyword);
         }
     }
@@ -43,7 +48,7 @@ class Group
         return $this->_keywords;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->_name;
     }

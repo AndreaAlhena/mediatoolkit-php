@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Models;
+namespace Mediatoolkit\Models;
 
 use Carbon\Carbon;
 

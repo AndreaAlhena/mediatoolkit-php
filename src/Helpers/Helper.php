@@ -1,8 +1,8 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Helpers;
+namespace Mediatoolkit\Helpers;
 
-use AndrewReborn\Mediatoolkit\Interfaces\HelperInterface,
+use Mediatoolkit\Interfaces\HelperInterface,
     GuzzleHttp\Client;
 
 class Helper implements HelperInterface

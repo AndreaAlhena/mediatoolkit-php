@@ -1,8 +1,8 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Helpers;
+namespace Mediatoolkit\Helpers;
 
-use AndrewReborn\Mediatoolkit\Models\Keyword;
+use Mediatoolkit\Models\Keyword;
 
 class KeywordHelper extends Helper
 {
