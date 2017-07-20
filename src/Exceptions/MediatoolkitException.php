@@ -1,8 +1,8 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Exceptions;
+namespace Mediatoolkit\Exceptions;
 
 class MediatoolkitException extends \Exception
 {
-    // Silence is golden
+    
 }

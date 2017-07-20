@@ -1,15 +1,16 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit;
+namespace Mediatoolkit;
 
-use AndrewReborn\Mediatoolkit\Exceptions\MediatoolkitException,
-    AndrewReborn\Mediatoolkit\Helpers\GroupHelper;
+use GuzzleHttp\Client,
+    Mediatoolkit\Exceptions\MediatoolkitException,
+    Mediatoolkit\Helpers\GroupHelper;
 
 class Mediatoolkit
 {
     const BASE_URI               = 'https://api.mediatoolkit.com';
+    const ORGANISATION_ENV_NAME  = 'MEDIATOOLKIT_API_ORGANISATION';
     const TOKEN_ENV_NAME         = 'MEDIATOOLKIT_API_TOKEN';
-    const TOKEN_ENV_ORGANISATION = 'MEDIATOOLKIT_API_ORGANISATION';
     
     /**
      * The organization Id
@@ -45,7 +46,7 @@ class Mediatoolkit
         }
 
         if (empty($this->_token)) {
-            throw new MediatoolkitException('No Token provided');
+            //throw new MediatoolkitException('No Token provided');
         }
 
         $this->client = new Client(['base_uri' => self::BASE_URI]);

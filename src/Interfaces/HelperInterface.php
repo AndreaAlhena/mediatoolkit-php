@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Interfaces;
+namespace Mediatoolkit\Interfaces;
 
 use GuzzleHttp\Client;
 

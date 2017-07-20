@@ -1,8 +1,8 @@
 <?php
 
-namespace AndrewReborn\Mediatoolkit\Helpers;
+namespace Mediatoolkit\Helpers;
 
-use AndrewReborn\Mediatoolkit\Models\Group;
+use Mediatoolkit\Models\Group;
 
 class GroupHelper extends Helper
 {
