@@ -2,12 +2,28 @@
 
 namespace Tests;
 
-use Mediatoolkit\Mediatoolkit,
+use Mediatoolkit\Helpers\GroupHelper,
+    Mediatoolkit\Helpers\KeywordHelper,
+    Mediatoolkit\Mediatoolkit,
     Mediatoolkit\Exceptions\MediatoolkitException,
     PHPUnit\Framework\TestCase;
 
 class StackTest extends TestCase
 {
+    public function testGetGroupHelper()
+    {
+        $mediatoolkit = new Mediatoolkit('organisation', 'token');
+        $groupHelper  = $mediatoolkit->getGroupHelper();
+        $this->assertEquals(get_class($groupHelper), GroupHelper::class);
+    }
+
+    public function testGetKeywordHelper()
+    {
+        $mediatoolkit  = new Mediatoolkit('organisation', 'token');
+        $keywordHelper = $mediatoolkit->getKeywordHelper();
+        $this->assertEquals(get_class($keywordHelper), KeywordHelper::class);
+    }
+
     public function testMissingOrganisation()
     {
         $this->expectException(MediatoolkitException::class);
