@@ -2,6 +2,8 @@
 
 namespace Mediatoolkit\Helpers;
 
+use GuzzleHttp\Psr7\Response;
+
 class HelperResponse
 {
     private $_code;
@@ -16,9 +18,9 @@ class HelperResponse
 
     private $_type;
     
-    public function __construct($json)
+    public function __construct(Response $response)
     {
-        $response        = json_decode($json, true);
+        $response = json_decode($response->getBody()->getContents(), true);
         
         $this->_code     = $response['code'];
         $this->_data     = $response['data'];
