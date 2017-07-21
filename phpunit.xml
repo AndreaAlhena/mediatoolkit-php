@@ -6,5 +6,8 @@
     <testsuite name="models">
       <directory>tests/Models</directory>
     </testsuite>
+    <testsuite name="helpers">
+      <directory>tests/Helpers</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
