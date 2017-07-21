@@ -12,17 +12,17 @@ class KeywordTest extends TestCase
     const TEST_MODEL_ID              = 123;
     const TEST_MODEL_LAST_EDIT       = 1500630429;
     const TEST_MODEL_NAME            = 'name';
-    const TEST_MODEL_NATURAL_KEYWORD = true;
+    const TEST_MODEL_NATURAL_QUERY = true;
 
     public function testKeywordGetters()
     {
         $model = new Keyword(
             [
-                Keyword::DATA_IS_ACTIVE_KEY       => self::TEST_MODEL_ACTIVE,
-                Keyword::DATA_ID_KEY              => self::TEST_MODEL_ID,
-                Keyword::DATA_LAST_EDIT_KEY       => self::TEST_MODEL_LAST_EDIT,
-                Keyword::DATA_NAME_KEY            => self::TEST_MODEL_NAME,
-                Keyword::DATA_NATURAL_KEYWORD_KEY => self::TEST_MODEL_NATURAL_KEYWORD
+                Keyword::DATA_IS_ACTIVE_KEY     => self::TEST_MODEL_ACTIVE,
+                Keyword::DATA_ID_KEY            => self::TEST_MODEL_ID,
+                Keyword::DATA_LAST_EDIT_KEY     => self::TEST_MODEL_LAST_EDIT,
+                Keyword::DATA_NAME_KEY          => self::TEST_MODEL_NAME,
+                Keyword::DATA_NATURAL_QUERY_KEY => self::TEST_MODEL_NATURAL_QUERY
             ]
         );
 
@@ -35,13 +35,13 @@ class KeywordTest extends TestCase
                 self::TEST_MODEL_ID,
                 self::TEST_MODEL_LAST_EDIT,
                 self::TEST_MODEL_NAME,
-                self::TEST_MODEL_NATURAL_KEYWORD
+                self::TEST_MODEL_NATURAL_QUERY
             ], [
                 $model->isActive(),
                 $model->getId(),
                 $model->getLastEdit()->timestamp,
                 $model->getName(),
-                $model->getNaturalKeyword()
+                $model->getNaturalQuery()
             ]
         );
     }
