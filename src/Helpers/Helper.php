@@ -7,6 +7,10 @@ use Mediatoolkit\Interfaces\HelperInterface,
 
 class Helper implements HelperInterface
 {
+    const MEDIATOOLKIT_REQUEST_BASE_URI         = '/organizations/%s';
+    const MEDIATOOLKIT_REQUEST_ORGANISATION_KEY = 'organization';
+    const MEDIATOOLKIT_REQUEST_TOKEN_KEY        = 'access_token';
+
     protected $client;
 
     protected $organisation;
@@ -20,8 +24,21 @@ class Helper implements HelperInterface
         $this->token        = $token;
     }
 
-    public function request($address, $data = []): HelperResponse
+    public function request($endpoint, $data = []): HelperResponse
     {
-        return new HelperResponse($this->client->get($address, $data));
+        $url = sprintf(self::MEDIATOOLKIT_REQUEST_BASE_URI, $this->organisation)
+            . "/$endpoint";
+
+        return new HelperResponse(
+            $this->client->get(
+                $url, [
+                    'query' => array_merge(
+                        $data, [
+                            self::MEDIATOOLKIT_REQUEST_TOKEN_KEY => $this->token
+                        ]
+                    )
+                ]
+            )
+        );
     }
 }
