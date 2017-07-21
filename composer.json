@@ -1,6 +1,6 @@
 {
     "name": "andrewreborn/mediatoolkit-php",
-    "description": "A MediaToolkit SDK written in PHP that works with MediaToolkit ReST API",
+    "description": "A MediaToolkit SDK written in PHP that works with the MediaToolkit ReST API",
     "type": "library",
     "authors": [{
         "name": "Andrea Tantimonaco",
@@ -22,6 +22,7 @@
         "url": "https://github.com/AndrewReborn/mediatoolkit-php"
     }],
     "require-dev": {
-        "phpunit/phpunit": "^6.2"
+        "phpunit/phpunit": "^6.2",
+        "vlucas/phpdotenv": "^2.0"
     }
 }
