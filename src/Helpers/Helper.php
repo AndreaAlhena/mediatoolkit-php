@@ -2,7 +2,8 @@
 
 namespace Mediatoolkit\Helpers;
 
-use Mediatoolkit\Interfaces\HelperInterface,
+use Mediatoolkit\Helpers\Exceptions\InvalidMethodException,
+    Mediatoolkit\Interfaces\HelperInterface,
     GuzzleHttp\Client;
 
 class Helper implements HelperInterface
@@ -24,13 +25,20 @@ class Helper implements HelperInterface
         $this->token        = $token;
     }
 
-    public function request($endpoint, $data = []): HelperResponse
+    public function request($endpoint, $data = [], $method = 'get'): HelperResponse
     {
+        // Normalize the $method content
+        $method = strtolower($method);
+        
+        if (!in_array($method, ['get', 'post'])) {
+            throw new InvalidMethodEception("$method is not a valid method: only get and post are allowed");
+        }
+
         $url = sprintf(self::MEDIATOOLKIT_REQUEST_BASE_URI, $this->organisation)
             . "/$endpoint";
 
         return new HelperResponse(
-            $this->client->get(
+            $this->client->$method(
                 $url, [
                     'query' => array_merge(
                         $data, [
