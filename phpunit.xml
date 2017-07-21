@@ -3,5 +3,8 @@
     <testsuite name="main">
       <directory>tests/MediatoolkitTest.php</directory>
     </testsuite>
+    <testsuite name="models">
+      <directory>tests/Models</directory>
+    </testsuite>
   </testsuites>
 </phpunit>

@@ -8,7 +8,7 @@ use Mediatoolkit\Helpers\GroupHelper,
     Mediatoolkit\Exceptions\MediatoolkitException,
     PHPUnit\Framework\TestCase;
 
-class StackTest extends TestCase
+class MediatoolkitTest extends TestCase
 {
     public function testGetGroupHelper()
     {

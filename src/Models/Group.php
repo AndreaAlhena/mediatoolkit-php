@@ -26,6 +26,7 @@ class Group
     {
         $this->_id       = $data[self::DATA_ID_KEY];
         $this->_isPublic = $data[self::DATA_IS_PUBLIC_KEY];
+        $this->_keywords = [];
         $this->_name     = $data[self::DATA_NAME_KEY];
 
         foreach ($data[self::DATA_KEYWORDS_KEY] as $keyword) {
@@ -33,6 +34,11 @@ class Group
         }
     }
 
+    /**
+     * Returns the Group Id
+     *
+     * @return void
+     */
     public function getId()
     {
         return $this->_id;
@@ -48,11 +54,21 @@ class Group
         return $this->_keywords;
     }
 
+    /**
+     * Returns the Group name
+     *
+     * @return string
+     */
     public function getName(): string
     {
         return $this->_name;
     }
 
+    /**
+     * Returns if the Group is public or not
+     *
+     * @return boolean
+     */
     public function isPublic()
     {
         return $this->_isPublic;
