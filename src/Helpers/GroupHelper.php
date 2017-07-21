@@ -6,6 +6,8 @@ use Mediatoolkit\Models\Group;
 
 class GroupHelper extends Helper
 {
+    const RESPONSE_GROUPS_KEY = 'groups';
+
     /**
      * Returns the available groups. If a $group is provided, a Group is returned.
      * Otherwise, a stack of Groups is provided
@@ -17,7 +19,16 @@ class GroupHelper extends Helper
     public function read($group = null)
     {
         if (empty($group)) {
-            return new Group($this->request('groups', [])->getData());
+            $response = $this->request('groups', []);
+
+            $data   = $response->getData();
+            $groups = [];
+
+            foreach ($data[self::RESPONSE_GROUPS_KEY] as $group) {
+                $groups[] = new Group($group);
+            }
+
+            return $groups;
         }
     }
 }
