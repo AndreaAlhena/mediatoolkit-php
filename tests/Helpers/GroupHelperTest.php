@@ -5,6 +5,7 @@ namespace Tests\Helpers;
 use Carbon\Carbon,
     GuzzleHttp\Client,
     Mediatoolkit\Mediatoolkit,
+    Mediatoolkit\Models\Group,
     Mediatoolkit\Helpers\GroupHelper,
     PHPUnit\Framework\TestCase;
 
@@ -29,6 +30,12 @@ class GroupHelperTest extends TestCase
     public function testHelperInstanceType()
     {
         $this->assertInstanceOf(GroupHelper::class, $this->helper);
+    }
+
+    public function testCreate()
+    {
+        $ret = $this->helper->create('test', true);
+        $this->assertInstanceOf(Group::class, $ret);
     }
 
     public function testRead()
