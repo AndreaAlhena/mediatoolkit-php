@@ -51,7 +51,7 @@ class Keyword
         return $this->_name;
     }
 
-    public function getnaturalQuery(): string
+    public function getNaturalQuery(): string
     {
         return $this->_naturalQuery;
     }
