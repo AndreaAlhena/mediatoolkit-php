@@ -20,7 +20,7 @@ class GroupHelper extends Helper
             'post'
         );
 
-        $data  = $response->getData();
+        $data = $response->getData();
         return new Group($data);
     }
 
@@ -40,7 +40,6 @@ class GroupHelper extends Helper
         }
 
         $data = $response->getData();
-        
         return new Group($data);
     }
 
@@ -74,5 +73,8 @@ class GroupHelper extends Helper
             ],
             'post'
         );
+
+        $data = $response->getData();
+        return new Group($data);
     }
 }

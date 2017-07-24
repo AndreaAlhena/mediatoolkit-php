@@ -14,6 +14,10 @@ use Carbon\Carbon,
  */
 class GroupHelperTest extends TestCase
 {
+
+    const UPDATE_TEST_NAME         = 'Test Key';
+    const UPDATE_TEST_NAME_UPDATED = 'Modified Test Key';
+
     public function setUp()
     {
         $dotenv = new \Dotenv\Dotenv(__DIR__ . '/../../');
@@ -64,5 +68,15 @@ class GroupHelperTest extends TestCase
     {
         $ret = $this->helper->read();
         $this->assertTrue(is_array($ret));
+    }
+
+    public function testUpdate()
+    {
+        $model       = $this->helper->create(self::UPDATE_TEST_NAME, true);
+        $model->name = self::UPDATE_TEST_NAME_UPDATED;
+        $ret         = $this->helper->update($model);
+
+        $this->assertInstanceOf(Group::class, $ret);
+        $this->assertEquals($ret->name, self::UPDATE_TEST_NAME_UPDATED);
     }
 }
