@@ -11,11 +11,11 @@ class Group
 
     private $_id;
 
-    private $_isPublic;
+    public $isPublic;
 
-    private $_keywords;
+    public $keywords;
 
-    private $_name;
+    public $name;
 
     /**
      * Constructor
@@ -25,12 +25,12 @@ class Group
     public function __construct($data)
     {
         $this->_id       = $data[self::DATA_ID_KEY];
-        $this->_isPublic = $data[self::DATA_IS_PUBLIC_KEY];
-        $this->_keywords = [];
-        $this->_name     = $data[self::DATA_NAME_KEY];
+        $this->isPublic = $data[self::DATA_IS_PUBLIC_KEY];
+        $this->keywords = [];
+        $this->name     = $data[self::DATA_NAME_KEY];
 
         foreach ($data[self::DATA_KEYWORDS_KEY] as $keyword) {
-            $this->_keywords[] = new Keyword($keyword);
+            $this->keywords[] = new Keyword($keyword);
         }
     }
 
@@ -42,35 +42,5 @@ class Group
     public function getId()
     {
         return $this->_id;
-    }
-
-    /**
-     * Returns the keywords associated to the Group
-     *
-     * @return array An array of Keyword models
-     */
-    public function getKeywords()
-    {
-        return $this->_keywords;
-    }
-
-    /**
-     * Returns the Group name
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->_name;
-    }
-
-    /**
-     * Returns if the Group is public or not
-     *
-     * @return boolean
-     */
-    public function isPublic()
-    {
-        return $this->_isPublic;
     }
 }
