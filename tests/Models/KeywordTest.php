@@ -9,6 +9,7 @@ use Carbon\Carbon,
 class KeywordTest extends TestCase
 {
     const TEST_MODEL_ACTIVE          = true;
+    const TEST_MODEL_GROUP_ID        = 0;
     const TEST_MODEL_ID              = 123;
     const TEST_MODEL_LAST_EDIT       = 1500630429;
     const TEST_MODEL_NAME            = 'name';
@@ -18,8 +19,9 @@ class KeywordTest extends TestCase
     {
         $model = new Keyword(
             [
-                Keyword::DATA_IS_ACTIVE_KEY     => self::TEST_MODEL_ACTIVE,
+                Keyword::DATA_GROUP_ID_KEY      => self::TEST_MODEL_GROUP_ID,
                 Keyword::DATA_ID_KEY            => self::TEST_MODEL_ID,
+                Keyword::DATA_IS_ACTIVE_KEY     => self::TEST_MODEL_ACTIVE,
                 Keyword::DATA_LAST_EDIT_KEY     => self::TEST_MODEL_LAST_EDIT,
                 Keyword::DATA_NAME_KEY          => self::TEST_MODEL_NAME,
                 Keyword::DATA_NATURAL_QUERY_KEY => self::TEST_MODEL_NATURAL_QUERY
@@ -32,16 +34,18 @@ class KeywordTest extends TestCase
         $this->assertEquals(
             [
                 self::TEST_MODEL_ACTIVE,
+                self::TEST_MODEL_GROUP_ID,
                 self::TEST_MODEL_ID,
                 self::TEST_MODEL_LAST_EDIT,
                 self::TEST_MODEL_NAME,
                 self::TEST_MODEL_NATURAL_QUERY
             ], [
-                $model->isActive(),
+                $model->isActive,
+                $model->getGroupId(),
                 $model->getId(),
                 $model->getLastEdit()->timestamp,
-                $model->getName(),
-                $model->getNaturalQuery()
+                $model->name,
+                $model->naturalQuery
             ]
         );
     }

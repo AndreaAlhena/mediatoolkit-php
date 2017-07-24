@@ -2,9 +2,7 @@
 
 namespace Tests\Helpers;
 
-use Carbon\Carbon,
-    GuzzleHttp\Client,
-    Mediatoolkit\Mediatoolkit,
+use Mediatoolkit\Mediatoolkit,
     Mediatoolkit\Models\Group,
     Mediatoolkit\Helpers\GroupHelper,
     PHPUnit\Framework\TestCase;
@@ -14,8 +12,7 @@ use Carbon\Carbon,
  */
 class GroupHelperTest extends TestCase
 {
-
-    const UPDATE_TEST_NAME         = 'Test Key';
+    const CREATE_TEST_NAME         = 'Test';
     const UPDATE_TEST_NAME_UPDATED = 'Modified Test Key';
 
     public function setUp()
@@ -43,7 +40,7 @@ class GroupHelperTest extends TestCase
      */
     public function testCreate()
     {
-        $group = $this->helper->create('test', true);
+        $group = $this->helper->create(self::CREATE_TEST_NAME, true);
         $this->assertInstanceOf(Group::class, $group);
 
         return $group;
