@@ -30,7 +30,7 @@ class Helper implements HelperInterface
         // Normalize the $method content
         $method = strtolower($method);
         
-        if (!in_array($method, ['get', 'post'])) {
+        if (!in_array($method, ['get', 'post', 'delete'])) {
             throw new InvalidMethodEception("$method is not a valid method: only get and post are allowed");
         }
 

@@ -43,18 +43,36 @@ class GroupHelperTest extends TestCase
      */
     public function testCreate()
     {
-        $ret = $this->helper->create('test', true);
-        $this->assertInstanceOf(Group::class, $ret);
+        $group = $this->helper->create('test', true);
+        $this->assertInstanceOf(Group::class, $group);
+
+        return $group;
     }
 
+    /**
+     * Tests the find method against the newly created Group
+     * 
+     * @depends testCreate
+     * 
+     * @return void
+     */
+    public function testFindWithExistingGroup($group)
+    {
+        $ret = $this->helper->find($group->getId());
+        $this->assertInstanceOf(Group::class, $ret);
+        $this->assertEquals($ret->getId(), $group->getId());
+
+        return $group;
+    }
+    
     /**
      * Tests the find method of the helper
      *
      * @return void
      */
-    public function testFind()
+    public function testFindWithUnexistingGroup()
     {
-        $ret = $this->helper->find(0, true);
+        $ret = $this->helper->find(0);
         $this->assertInstanceOf(Group::class, $ret);
         $this->assertEquals($ret->getId(), 0);
     }
@@ -70,13 +88,36 @@ class GroupHelperTest extends TestCase
         $this->assertTrue(is_array($ret));
     }
 
-    public function testUpdate()
+    /**
+     * Tests the update method of the helper
+     *
+     * @depends testFindWithExistingGroup
+     * 
+     * @return void
+     */
+    public function testUpdate($group)
     {
-        $model       = $this->helper->create(self::UPDATE_TEST_NAME, true);
-        $model->name = self::UPDATE_TEST_NAME_UPDATED;
-        $ret         = $this->helper->update($model);
+        $group->name = self::UPDATE_TEST_NAME_UPDATED;
+        $group       = $this->helper->update($group);
 
-        $this->assertInstanceOf(Group::class, $ret);
-        $this->assertEquals($ret->name, self::UPDATE_TEST_NAME_UPDATED);
+        $this->assertInstanceOf(Group::class, $group);
+        $this->assertEquals($group->name, self::UPDATE_TEST_NAME_UPDATED);
+
+        return $group;
+    }
+
+    /**
+     * Tests the delete method of the helper
+     * Has not been declared in alphabetical order as it's the last method
+     * that must be tested, as removes the keywords created during the test
+     * 
+     * @depends testUpdate
+     * 
+     * @return void
+    */    
+    public function testDelete($group)
+    {
+        $ret = $this->helper->delete($group);
+        $this->assertTrue($ret);
     }
 }

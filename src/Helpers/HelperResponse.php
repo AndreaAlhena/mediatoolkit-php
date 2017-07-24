@@ -34,4 +34,9 @@ class HelperResponse
     {
         return $this->_data;
     }
+
+    public function getMessage()
+    {
+        return $this->_message;
+    }
 }

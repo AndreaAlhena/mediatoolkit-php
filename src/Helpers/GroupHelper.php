@@ -7,7 +7,9 @@ use GuzzleHttp\Exception\ClientException,
 
 class GroupHelper extends Helper
 {
-    const RESPONSE_GROUPS_KEY = 'groups';
+    const RESPONSE_CODE_GROUP_IS_REMOVED = 'GROUP_IS_REMOVED';
+    const RESPONSE_GROUPS_KEY            = 'groups';
+    const RESPONSE_MESSAGE_CODE          = 'message_code';
 
     public function create(string $name, bool $isPublic = true): Group
     {
@@ -22,6 +24,19 @@ class GroupHelper extends Helper
 
         $data = $response->getData();
         return new Group($data);
+    }
+
+    public function delete(Group $group): bool
+    {
+        try {
+            $response = $this->request("groups/{$group->getId()}", [], 'delete');
+        } catch(ClientException $e) {
+            return false;
+        }
+
+        $data = $response->getData();
+
+        return ($data[self::RESPONSE_MESSAGE_CODE] === self::RESPONSE_CODE_GROUP_IS_REMOVED);
     }
 
     public function find(int $group): Group
