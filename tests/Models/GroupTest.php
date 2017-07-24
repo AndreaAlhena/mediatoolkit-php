@@ -16,10 +16,10 @@ class GroupTest extends TestCase
     {
         $model = new Group(
             [
-                'id'       => self::TEST_MODEL_ID,
-                'public'   => self::TEST_MODEL_PUBLIC,
-                'keywords' => self::TEST_MODEL_KEYWORDS_EMPTY,
-                'name'     => self::TEST_MODEL_NAME
+                Group::DATA_ID_KEY        => self::TEST_MODEL_ID,
+                Group::DATA_IS_PUBLIC_KEY => self::TEST_MODEL_PUBLIC,
+                Group::DATA_KEYWORDS_KEY  => self::TEST_MODEL_KEYWORDS_EMPTY,
+                Group::DATA_NAME_KEY      => self::TEST_MODEL_NAME
             ]
         );
 
@@ -31,9 +31,9 @@ class GroupTest extends TestCase
                 self::TEST_MODEL_NAME
             ], [
                 $model->getId(),
-                $model->isPublic(),
-                $model->getKeywords(),
-                $model->getName()
+                $model->isPublic,
+                $model->keywords,
+                $model->name
             ]
         );
     }
