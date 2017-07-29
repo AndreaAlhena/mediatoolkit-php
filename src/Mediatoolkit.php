@@ -7,7 +7,8 @@ namespace Mediatoolkit;
 use GuzzleHttp\Client,
     Mediatoolkit\Exceptions\MediatoolkitException,
     Mediatoolkit\Helpers\GroupHelper,
-    Mediatoolkit\Helpers\KeywordHelper;
+    Mediatoolkit\Helpers\KeywordHelper,
+    Mediatoolkit\Helpers\MentionHelper;
 
 class Mediatoolkit
 {
@@ -78,6 +79,16 @@ class Mediatoolkit
     public function getKeywordHelper(): KeywordHelper
     {
         return new KeywordHelper($this->client, $this->_organisation, $this->_token);
+    }
+
+    /**
+     * Returns an instance of the MentionHelper
+     *
+     * @return MentionHelper
+     */
+    public function getMentionHelper(): MentionHelper
+    {
+        return new MentionHelper($this->client, $this->_organisation, $this->_token);
     }
 
     /**
