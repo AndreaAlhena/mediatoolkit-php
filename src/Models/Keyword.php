@@ -6,7 +6,7 @@ namespace Mediatoolkit\Models;
 
 use Carbon\Carbon;
 
-class Keyword
+class Keyword implements \JsonSerializable
 {
     const DATA_DEFINITION_KEY                             = 'definition';
     const DATA_DEFINITION_QUERY_KEY                       = 'query';
@@ -56,7 +56,7 @@ class Keyword
         }
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->_id;
     }
@@ -69,5 +69,22 @@ class Keyword
     public function getLastEdit(): Carbon
     {
         return $this->_lastEdit;
+    }
+
+    /**
+     * Implements the JsonSerializable interface
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            self::DATA_GROUP_ID_KEY                               => $this->_groupId,
+            self::DATA_ID_KEY                                     => $this->_id,
+            self::DATA_IS_ACTIVE_KEY                              => $this->isActive,
+            self::DATA_DEFINITION_QUERY_PHRASE_CASE_SENSITIVE_KEY => $this->isCaseSensitive,
+            self::DATA_NAME_KEY                                   => $this->name,
+            self::DATA_NATURAL_QUERY_KEY                          => $this->naturalQuery
+        ];
     }
 }

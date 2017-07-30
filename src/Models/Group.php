@@ -2,7 +2,7 @@
 
 namespace Mediatoolkit\Models;
 
-class Group
+class Group implements \JsonSerializable
 {
     const DATA_ID_KEY              = 'id';
     const DATA_IS_PUBLIC_KEY       = 'public';
@@ -42,5 +42,19 @@ class Group
     public function getId()
     {
         return $this->_id;
+    }
+
+    /**
+     * Implements the JsonSerializable interface
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            self::DATA_ID_KEY        => $this->_id,
+            self::DATA_IS_PUBLIC_KEY => $this->isPublic,
+            self::DATA_NAME_KEY      => $this->name
+        ];
     }
 }
