@@ -76,14 +76,14 @@ class GroupHelper extends Helper
         return $groups;
     }
 
-    public function update(int $id, string $name, bool $isPublic)
+    public function update(Group $group)
     {
         $response = $this->request(
-            "groups/$id",
+            "groups/{$group->getId()}",
             [
-                Group::DATA_ID_KEY        => $id,
-                Group::DATA_IS_PUBLIC_KEY => $isPublic,
-                Group::DATA_NAME_KEY      => $name
+                Group::DATA_ID_KEY        => $group->getId(),
+                Group::DATA_IS_PUBLIC_KEY => $group->isPublic,
+                Group::DATA_NAME_KEY      => $group->name
             ],
             'post'
         );
