@@ -95,7 +95,11 @@ class GroupHelperTest extends TestCase
     public function testUpdate($group)
     {
         $group->name = self::UPDATE_TEST_NAME_UPDATED;
-        $group       = $this->helper->update($group);
+        $group       = $this->helper->update(
+            $group->getId(),
+            $group->name,
+            $group->isPublic
+        );
 
         $this->assertInstanceOf(Group::class, $group);
         $this->assertEquals($group->name, self::UPDATE_TEST_NAME_UPDATED);
