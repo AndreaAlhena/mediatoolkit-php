@@ -63,8 +63,12 @@ class GroupHelper extends Helper
      *
      * @return mixed array An array with the available Group models
      */
-    public function read($group = null): array
+    public function read(int $group = null): array
     {
+        if ($group) {
+            return $this->find($group);
+        }
+        
         $response = $this->request('groups', []);
         $data     = $response->getData();
         $groups   = [];
