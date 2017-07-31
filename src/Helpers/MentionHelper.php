@@ -3,7 +3,8 @@
 namespace Mediatoolkit\Helpers;
 
 use GuzzleHttp\Exception\ClientException,
-    Mediatoolkit\Models\Keyword;
+    Mediatoolkit\Models\Keyword,
+    Mediatoolkit\Models\Mention;
 
 class MentionHelper extends Helper
 {
