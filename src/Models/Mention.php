@@ -218,17 +218,17 @@ class Mention implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            self::DATA_COMMENT_COUNT_KEY     => $this->_commentCount,
-            self::DATA_DESCRIPTION_KEY       => $this->_description,
-            self::DATA_DOMAIN_KEY            => $this->_domain,
-            self::DATA_ID_KEY                => $this->_id,
-            self::DATA_INSERT_TIME           => $this->_insertTime->format('Y-m-d H:i:s'),
-            self::DATA_KEYWORD_NAME          => $this->_keywordName,
+            self::DATA_COMMENT_COUNT_KEY      => $this->_commentCount,
+            self::DATA_DESCRIPTION_KEY        => $this->_description,
+            self::DATA_DOMAIN_KEY             => $this->_domain,
+            self::DATA_ID_KEY                 => $this->_id,
+            self::DATA_INSERT_TIME_KEY        => $this->_insertTime->format('Y-m-d H:i:s'),
+            self::DATA_KEYWORD_NAME_KEY       => $this->_keywordName,
             self::DATA_NUMBER_OF_SIMILARS_KEY => $this->_numberOfSimilar,
-            self::DATA_REACH_KEY             => $this->_reach,
-            self::DATA_TITLE_KEY             => $this->_title,
-            self::DATA_TYPE_KEY              => $this->_type,
-            self::DATA_URL_KEY               => $this->_url
+            self::DATA_REACH_KEY              => $this->_reach,
+            self::DATA_TITLE_KEY              => $this->_title,
+            self::DATA_TYPE_KEY               => $this->_type,
+            self::DATA_URL_KEY                => $this->_url
         ];
     }
 }
