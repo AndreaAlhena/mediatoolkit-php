@@ -54,6 +54,7 @@ class Group implements \JsonSerializable
         return [
             self::DATA_ID_KEY        => $this->_id,
             self::DATA_IS_PUBLIC_KEY => $this->isPublic,
+            self::DATA_KEYWORDS_KEY  => $this->keywords,
             self::DATA_NAME_KEY      => $this->name
         ];
     }
